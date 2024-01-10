@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieRecommendation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #000000;
+            color: #fff;
+            padding: 1px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2.5rem;
+            color: #222;
+        }
+        #movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+        .movie {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            max-width: 300px;
+        }
+        .movie:hover {
+            transform: translateY(-5px);
+        }
+        .movie img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        .movie h2 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+        }
+        .movie p {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #777;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        .page {
+            padding: 10px 20px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .page:hover {
+            background-color: #444;
+        }
+        .current {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+.menu {
+    position:sticky;
+    top:0;
+    background-color: #000000;
+    padding:10px 0px 10px 0px;
+    color:white;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .menu a{
+    float:right;
+    color:white;
+    text-align:center;
+    padding:14px 16px;
+    text-decoration: none;
+    font-size: 15px;
+  
+  }
+  
+  .menu-log{
+    right:auto;
+    float:right;
+  }
+
+  .head1 {
+    font-size: 30px;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: absolute;
+    left:43%;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+  
+  .head1:focus,
+  .head1:hover {
+    color: #fff;
+  }
+  
+  .head1:focus:after,
+  .head1:hover:after {
+    width: 100%;
+    left: 0%;
+  }
+  
+  .head1:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+
+            <div text-align="center" class="head1">MOVIEGUIDE</div>
+            <a href=""></a>
+            <a href="disfav.php"><img src="heart.png" style="width:20px;height:20px">FAV </a>
+            <div class="menu-log">
+              <a class="login" href="home.php"><img src="person-fill.svg" class="user-pic"/> profile</a>
+          </div>
+          </nav>
+
+
+                <form id="form" style="display: flex; align-items: center; transition: width 0.3s; width: 2000px;">
+                    <input type="text" placeholder="Search" id="search" style="width: 100%; border: none; outline: none; padding: 8px; transition: width 0.3s;">
+                    <span class="icon" style="cursor: pointer;">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </form>
+    </header>
+
+    <h1>TRENDING MOVIES RIGHT NOW</h1>
+    <div id="movie-list"></div>
+
+    <main id="main"></main>
+    <div class="pagination">
+        <div class="page" id="prev">Previous Page</div>
+        <div class="current" id="current">1</div>
+        <div class="page" id="next">Next Page</div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const API_KEY = '1cf50e6248dc270629e802686245c2c8'; // Replace with your TMDB API key
+            const BASE_URL = 'https://api.themoviedb.org/3';
+            const IMG_URL = 'https://image.tmdb.org/t/p/w200';
+            let currentPage = 1; // Initialize the current page to 1
+
+            // Fetch trending movies from TMDB API
+            function fetchMovies(page) {
+                $.ajax({
+                    url: `${BASE_URL}/trending/movie/week?api_key=${API_KEY}&page=${page}`,
+                    method: 'GET',
+                    success: function (response) {
+                        const movies = response.results;
+                        displayMovies(movies);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error fetching trending movies:', textStatus, errorThrown);
+                    }
+                });
+            }
+
+            // Display trending movies
+            function displayMovies(movies) {
+                const movieList = $('#movie-list');
+                movieList.empty(); // Clear the previous movie list
+
+                movies.forEach(function (movie) {
+                    const movieItem = `
+                        <div class="movie">
+                            <img src="${IMG_URL}${movie.poster_path}" alt="${movie.title}">
+                            <h2>${movie.title}   <button class="favorite-button" data-movie-id="${movie.id}">  <img src="heart.png" style="width:20px;height:20px"></button> </h2>
+                            <p>Release Date: ${movie.release_date}</p>
+                            <p>id: ${movie.id}</p>
+                           
+                        </div>
+                    `;
+                    movieList.append(movieItem);
+                });
+
+                $('.favorite-button').click(function() {
+                    const movie_id = $(this).data('movie_id');
+                    addToFavorites(movie_id);
+                });
+
+            }
+
+            function addToFavorites(movie_id) {
+                // You can use AJAX to post the movieId to addfav.php
+                $.ajax({
+                    url: 'extra/addfav.php', // Change this URL to the actual endpoint
+                    method: 'POST',
+                    data: { movie_id: movie_id },
+                    success: function (response) {
+                        alert('Movie added to favorites:');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error adding movie to favorites:', textStatus, errorThrown);
+                    }
+                });
+            }
+
+
+
+
+            // Update pagination buttons
+            function updatePagination() {
+                $('#current').text(currentPage);
+            }
+
+            $('#next').on('click', function () {
+                currentPage++; // Increment current page
+                fetchMovies(currentPage); // Fetch and display movies for the new page
+                updatePagination(); // Update pagination buttons
+            });
+
+
+             // Search movies based on user input
+             $('#form').on('submit', function (e) {
+                e.preventDefault(); // Prevent form submission
+
+                const searchTerm = $('#search').val();
+                if (searchTerm) {
+                    // Make a request to search movies based on the entered term
+                    $.ajax({
+                        url: `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`,
+                        method: 'GET',
+                        success: function (response) {
+                            const movies = response.results;
+                            displayMovies(movies);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.error('Error searching movies:', textStatus, errorThrown);
+                        }
+                    });
+                }
+            });
+
+
+
+            // Fetch and display movies for the initial page
+            fetchMovies(currentPage);
+            updatePagination();
+        });
+    </script>
+ 
+</body>
+</html>
+

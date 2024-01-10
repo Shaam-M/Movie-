@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+.head1 {
+  font-size: 30px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: absolute;
+  left:43%;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.head1:focus,
+.head1:hover {
+  color: #fff;
+}
+
+.head1:focus:after,
+.head1:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.head1:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+
+.menu {
+  position:sticky;
+  top:0;
+  background-color: #050001;
+  padding:10px 0px 10px 0px;
+  color:white;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.menu a{
+  float:left;
+  color:white;
+  text-align:center;
+  padding:14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+
+}
+
+.menu-log{
+  right:auto;
+  float:right;
+}
+
+
+
+.container1{
+    --dark-color: #ffffff;
+    height: 480px;
+    width: 800px;
+    background: var(--dark-color);
+    position: absolute;
+    top: 20%;
+    left: 23%;
+    border-radius: 5px;
+   }
+   
+   form {   
+    border: 3px solid #000000;   
+  }   
+  
+  
+  .input {
+    width: 300px;
+    height: 40px;
+    color:#ffffff;
+    border: 5px solid transparent #ffffff;
+    outline: none;    
+    border-bottom: 2px solid #ffffff;
+    caret-color: #000000;
+    background-color: #000000;
+    padding: 10px;
+    letter-spacing: 1px;
+    border-radius: 5px;  
+    position: relative;
+    top:95px;   
+  }
+  
+  .input:focus {
+    border: 2px solid #ffffff;
+    caret-color: #000000;
+    color: #ffffff;
+  }
+  
+  .input:focus::placeholder {
+    color: #ffffff;
+  }  
+  
+  .cancelbtn {   
+    width: auto;   
+    padding: 10px 18px;  
+    margin: 10px 5px; 
+    top:155px;
+  } 
+  
+  button {   
+    background-color: #000000;   
+    width: 30%;  
+    color: white;   
+    border-radius: 3px;
+    padding: 15px;   
+    margin: 10px 0px;   
+    border: none;   
+    cursor: pointer;  
+    position:relative;
+    top:150px;
+
+ }
+
+ body{
+  background-color: #d3d4d4;
+ }
+ 

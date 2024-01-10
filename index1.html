@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="recstyle.css">
+    <title>MovieRecommendation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="path/to/your/tmdb.js"></script>
+</head>
+<body>
+    <header>
+    <nav class="menu">
+
+        <div text-align="center" class="head1">MOVIEGUIDE</div>
+        <a href=""></a>
+        <a href="disfav.php"><img src="heart.png" style="width:20px;height:20px">FAV </a>
+        <div class="menu-log">
+          <a class="login" href="home.php"><img src="person-fill.svg" class="user-pic"/> profile</a>
+      </div>
+      </nav>
+
+      <form id="form" style="display: flex; align-items: center; transition: width 0.3s; width: 150px;">
+        <input type="text" placeholder="Search" id="search" style="width: 100%; border: none; outline: none; padding: 8px; transition: width 0.3s;">
+        <span class="icon" style="cursor: pointer;">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+        </span>
+    </form>
+          
+       
+    </header>
+    <div id="tags"></div>
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      
+        <!-- Overlay content -->
+        <div class="overlay-content" id="overlay-content"></div>
+        
+        <a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a> 
+        
+        <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow" >&#8658;</a>
+
+      </div>
+    <main id="main"></main>
+    <div class="pagination">
+        <div class="page" id="prev">Previous Page</div>
+        <div class="current" id="current">1</div>
+        <div class="page" id="next">Next Page</div>
+
+
+    </div>
+
+    <script src="tmdb.js"></script>
+</body>
+</html>
